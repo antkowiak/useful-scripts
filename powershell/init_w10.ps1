@@ -54,7 +54,7 @@ if (Test-Path -Path "$Env:SystemRoot\System32\OneDriveSetup.exe" -PathType Leaf)
 {
   "$Env:SystemRoot\System32\OneDriveSetup.exe /uninstall"
 }
-if (TestPath -Path "$Env:SystemRoot\SysWOW64\OneDriveSetup.exe" -PathType Leaf)
+if (Test-Path -Path "$Env:SystemRoot\SysWOW64\OneDriveSetup.exe" -PathType Leaf)
 {
   "$Env:SystemRoot\SysWOW64\OneDriveSetup.exe /uninstall"
 }
