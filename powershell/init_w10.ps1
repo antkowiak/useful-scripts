@@ -98,4 +98,9 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server" 
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Remote Assistance" -Name "fAllowToGetHelp" -Value 0 -Type DWord -Force
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Remote Assistance" -Name "fAllowFullControl" -Value 0 -Type DWord -Force
 
+# Disable windows indexing service
+$Env:SystemRoot\System32\sc.exe stop "WSearch"
+$Env:SystemRoot\System32\sc.exe config "WSearch" start= disabled
+
+
 
