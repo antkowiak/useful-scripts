@@ -50,8 +50,14 @@ Set-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\CloudContent" 
 
 # Uninstall and disable One Drive
 taskkill /f /im OneDrive.exe
-"$Env:SystemRoot\System32\OneDriveSetup.exe" /uninstall
-"$Env:SystemRoot\SysWOW64\OneDriveSetup.exe" /uninstall
+if (Test-Path "$Env:SystemRoot\System32\OneDriveSetup.exe" -PathType Leaf)
+{
+  "$Env:SystemRoot\System32\OneDriveSetup.exe" /uninstall
+}
+if (TestPath "$Env:SystemRoot\SysWOW64\OneDriveSetup.exe" -PathType Leaf)
+{
+  "$Env:SystemRoot\SysWOW64\OneDriveSetup.exe" /uninstall
+}
 rd "$Env:UserProfile\OneDrive" /Q /S
 rd "$Env:LocalAppData\Microsoft\OneDrive" /Q /S
 rd "$Env:ProgramData\Microsoft OneDrive" /Q /S
