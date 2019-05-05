@@ -58,10 +58,10 @@ if (Test-Path -Path "$Env:SystemRoot\SysWOW64\OneDriveSetup.exe" -PathType Leaf)
 {
   "$Env:SystemRoot\SysWOW64\OneDriveSetup.exe /uninstall"
 }
-# Remove-Item $Env:UserProfile\OneDrive
-# Remove-Item $Env:LocalAppData\Microsoft\OneDrive
-# Remove-Item $Env:ProgramData\Microsoft\OneDrive
-# Remove-Item C:\OneDriveTemp
+RD /S $Env:UserProfile\OneDrive
+RD /S Remove-Item $Env:LocalAppData\Microsoft\OneDrive
+RD /S $Env:ProgramData\Microsoft\OneDrive
+RD /S C:\OneDriveTemp
 REG Delete "HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /f
 REG Delete "HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /f
 if (!(Get-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\OneDrive" -ErrorAction SilentlyContinue))
@@ -71,8 +71,6 @@ if (!(Get-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\OneDrive" -Error
 Set-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\OneDrive" -Name "DisableFileSyncNGSC" -Value 1 -Type DWord -Force
 Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel" -Name "{018D5C66-4533-4307-9B53-224DE2ED1FE6}" -Value 1 -Type DWord -Force
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel" -Name "{018D5C66-4533-4307-9B53-224DE2ED1FE6}" -Value 1 -Type DWord -Force
-Set-ItemProperty -Path "HKCR:\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" -Name "System.IsPinnedToNameSpaceTree" -Value 0 -Type DWord -Force
-Set-ItemProperty -Path "HKCR:\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" -Name "System.IsPinnedToNameSpaceTree" -Value 0 -Type DWord -Force
 
 
 
