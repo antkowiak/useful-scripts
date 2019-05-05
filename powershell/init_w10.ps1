@@ -23,3 +23,6 @@ if (!(Get-Item -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\E
   New-Item -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer"
 }
 Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "ForceClassicControlPanel" -Value 1 -Type DWord -Force
+
+# Always show file extensions
+Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 0 -Type DWord -Force
