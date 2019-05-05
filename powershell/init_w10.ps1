@@ -52,11 +52,11 @@ Set-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\CloudContent" 
 taskkill /f /im OneDrive.exe
 if (Test-Path -Path "$Env:SystemRoot\System32\OneDriveSetup.exe" -PathType Leaf)
 {
-  "$Env:SystemRoot\System32\OneDriveSetup.exe" /uninstall
+  "$Env:SystemRoot\System32\OneDriveSetup.exe /uninstall"
 }
 if (TestPath -Path "$Env:SystemRoot\SysWOW64\OneDriveSetup.exe" -PathType Leaf)
 {
-  "$Env:SystemRoot\SysWOW64\OneDriveSetup.exe" /uninstall
+  "$Env:SystemRoot\SysWOW64\OneDriveSetup.exe /uninstall"
 }
 rd "$Env:UserProfile\OneDrive" /Q /S
 rd "$Env:LocalAppData\Microsoft\OneDrive" /Q /S
