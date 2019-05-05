@@ -93,3 +93,6 @@ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer
 # Disable automatic reboot on BSOD
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl" -Name "AutoReboot" -Value 0 -Type DWord -Force
 
+# Disable remote assistance connections
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\TerminalServer" -Name "fAllowToGetHelp" -Value 0 -Type DWord -Force
+
