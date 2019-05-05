@@ -102,5 +102,7 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Remote Assistance
 "$Env:SystemRoot\System32\sc.exe stop 'WSearch'"
 "$Env:SystemRoot\System32\sc.exe config 'WSearch' start= DISABLED"
 
+# Turn off indexing on all files
+ATTRIB /S /D C:\*.* -I
 
 
