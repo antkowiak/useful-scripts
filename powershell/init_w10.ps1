@@ -100,7 +100,7 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Remote Assistance
 
 # Disable windows indexing service
 "$Env:SystemRoot\System32\sc.exe stop 'WSearch'"
-"$Env:SystemRoot\System32\sc.exe config 'WSearch' start= disabled"
+"$Env:SystemRoot\System32\sc.exe config 'WSearch' start= DISABLED"
 
 
 
