@@ -60,8 +60,8 @@ if (Test-Path -Path "$Env:SystemRoot\SysWOW64\OneDriveSetup.exe" -PathType Leaf)
 }
 # Remove-Item $Env:UserProfile\OneDrive
 # Remove-Item $Env:LocalAppData\Microsoft\OneDrive
-Remove-Item $Env:ProgramData\Microsoft OneDrive
-Remove-Item C:\OneDriveTemp
+# Remove-Item $Env:ProgramData\Microsoft\OneDrive
+# Remove-Item C:\OneDriveTemp
 REG Delete "HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /f
 REG Delete "HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /f
 if (!(Get-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\OneDrive" -ErrorAction SilentlyContinue))
