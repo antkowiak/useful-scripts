@@ -58,10 +58,22 @@ if (Test-Path -Path "$Env:SystemRoot\SysWOW64\OneDriveSetup.exe" -PathType Leaf)
 {
   "$Env:SystemRoot\SysWOW64\OneDriveSetup.exe /uninstall"
 }
-Remove-Item -Path $Env:UserProfile\OneDrive -Recurse -Force
-Remove-Item -Path Remove-Item $Env:LocalAppData\Microsoft\OneDrive -Recurse -Force
-Remove-Item -Path $Env:ProgramData\Microsoft\OneDrive -Recurse -Force
-Remove-Item -Path C:\OneDriveTemp -Recurse -Force
+if (Test-Path -Path "$Env:UserProfile\OneDrive")
+{
+  Remove-Item -Path "$Env:UserProfile\OneDrive" -Recurse -Force
+}
+if (Test-Path -Path "$Env:LocalAppData\Microsoft\OneDrive")
+{
+  Remove-Item -Path "$Env:LocalAppData\Microsoft\OneDrive" -Recurse -Force
+}
+if (Test-Path -Path "$Env:ProgramData\Microsoft\OneDrive")
+{
+  Remove-Item -Path "$Env:ProgramData\Microsoft\OneDrive" -Recurse -Force
+}
+if (Test-Path -Path "C:\OneDriveTemp")
+{
+  Remove-Item -Path "C:\OneDriveTemp" -Recurse -Force
+}
 REG Delete "HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /f
 REG Delete "HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /f
 if (!(Get-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\OneDrive" -ErrorAction SilentlyContinue))
