@@ -7,7 +7,6 @@
 
 
 GITHUB_ROOT=/mnt/c/GitHub/
-EMAIL_ADDRESS="antkowiak@gmail.com"
 GITHUB_USER_NAME="antkowiak"
 
 
