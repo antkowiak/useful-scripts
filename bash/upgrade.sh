@@ -10,7 +10,7 @@
 # 2) do-release-upgrade
 #
 #
-# Created by Ryan Antkowiak (antkowiak@gmail.com)
+# Created by Ryan Antkowiak
 #
 
 COLOR_INVERSE="\e[7m"
