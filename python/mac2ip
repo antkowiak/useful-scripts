@@ -1,0 +1,47 @@
+#!/usr/bin/python3
+
+import sys
+
+ethers = []
+
+
+def populate_ethers():
+    with open("/etc/ethers", "r") as f:
+        contents = f.readlines()
+
+    for line in contents:
+        if line and not line.startswith("#"):
+            try:
+                mac_address, ip_address = line.split()[:2]
+                mac_address = mac_address.upper().replace(".", ":").replace("-", ":").strip()
+                ip_address = ip_address.strip()
+                if len(mac_address) == 17:
+                    ethers.append((mac_address, ip_address))
+            except ValueError:
+                pass
+
+
+def get_ip_address(mac_addr):
+    mac_addr = mac_addr.upper().replace(".", ":").replace("-", ":").strip()
+    for mac_address, ip_address in ethers:
+        if mac_address == mac_addr:
+            return ip_address
+    return ""
+
+
+def print_ips():
+    ips = []
+    for mac in sys.argv[1:]:
+        ip = get_ip_address(mac)
+        if ip:
+            ips.append(ip)
+
+    for ip in ips:
+        if len(ips) == 1:
+            print(f"{ip}", end='')
+        else:
+            print(f"{ip}", end='\n')
+
+
+populate_ethers()
+print_ips()
